@@ -3,12 +3,13 @@ import matplotlib.pyplot as plt
 import random
 
 class Individual:
-    def __init__(self, genotyp):
+    def __init__(self, genotyp, cost_function):
         self.genotyp = np.round(np.array(genotyp, dtype=float), 2)
         self.fenotyp = np.round(np.array(genotyp, dtype=float), 2)
+        self.cost_function = cost_function
 
     def Cost(self):
-        return round((np.sum(self.genotyp ** 2)), 8)
+        return round(self.cost_function(*self.genotyp), 8)
 
     def Neighboor(self, index, step_size):
         new_genotyp = np.copy(self.genotyp)
@@ -20,7 +21,7 @@ class Individual:
             new_genotyp[1] += step_size
         elif index == 3:
             new_genotyp[1] -= step_size
-        return Individual(new_genotyp)
+        return Individual(new_genotyp, self.cost_function)
 
     def random_point(self, x_range=(-3, 3), y_range=(-3, 3)):
         x = round(random.uniform(*x_range), 2)
@@ -48,10 +49,4 @@ def hill_climbing(start_point, step_size=0.01, max_iterations=5000):
 
     return path
 
-individual = Individual([0, 0])
-start_point = individual.random_point()
 
-infos = hill_climbing(Individual(start_point))
-
-#for idx, (point, cost_value) in enumerate(infos):
- #   print(f"Krok {idx + 1}: Punkt: {point}, Wartość funkcji kosztu: {cost_value}")
