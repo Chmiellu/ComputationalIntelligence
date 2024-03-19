@@ -41,7 +41,7 @@ def hill_climbing(start_point, step_size=0.01, max_iterations=5000):
         best_neighbor = min(neighbors, key=lambda x: x.Cost())
 
         if min(x.Cost() for x in neighbors) >= current_point.Cost():
-            print(f"Osiągnięto minimum. Zakończono na kroku {_ + 1}. Kolejny krok zwiększy funkcję kosztu.")
+            print(f"Osiągnięto minimum lokalne lub globalne. Zakończono na kroku {_ + 1}. Kolejny krok zwiększy funkcję kosztu.")
             break
 
         current_point = best_neighbor
