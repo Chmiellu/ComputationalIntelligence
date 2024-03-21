@@ -24,7 +24,7 @@ def michalewicz(*args, m=10):
 
 
 # Options: sphere, schwefel, michalewicz
-function = sphere
+function = schwefel
 
 # Options: every10, full, start_end
 points = "start_end"
@@ -41,8 +41,8 @@ if function == sphere:
     x = np.linspace(-5, 5, 100)
     y = np.linspace(-5, 5, 100)
 elif function == schwefel:
-    x = np.linspace(-500, 500, 100)
-    y = np.linspace(-500, 500, 100)
+    x = np.linspace(-50, 50, 100)
+    y = np.linspace(-50, 50, 100)
 elif function == michalewicz:
     x = np.linspace(0, np.pi, 100)
     y = np.linspace(0, np.pi, 100)

@@ -1,11 +1,10 @@
 import numpy as np
-import matplotlib.pyplot as plt
 import random
 
 class Individual:
     def __init__(self, genotyp, cost_function):
         self.genotyp = np.round(np.array(genotyp, dtype=float), 2)
-        self.fenotyp = np.round(np.array(genotyp, dtype=float), 2)
+        #self.fenotyp = np.round(np.array(genotyp, dtype=float), 2)
         self.cost_function = cost_function
 
     def Cost(self):
